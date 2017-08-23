@@ -1,0 +1,34 @@
+group 'myGardlePugin'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+//指定哪些源文件（或文件夹下的源文件）要被编译，哪些源文件要被排除
+sourceSets {
+    main {
+        groovy {
+            srcDirs = [
+                    'src/main/groovy',
+                    'src/main/java'
+            ]
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+//上传:cmd 到根目录 gradle uploadArchives成功后到 ../repo 找插件
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}

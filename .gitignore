@@ -1,0 +1,7 @@
+.idea/
+.gradle/
+build/
+demo-api/build
+*.iml
+demo-service/build
+demo-web/build
