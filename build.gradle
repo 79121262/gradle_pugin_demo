@@ -23,8 +23,12 @@ sourceSets {
     }
 }
 
+//定义配置变量
+ext.mavenCentral = "http://maven.aliyun.com/nexus/content/groups/public"
+
 repositories {
-    mavenCentral()
+    maven { url mavenCentral }
+    maven { url "file://C:/Users/cai.tian/.gradle/caches/modules-2/files-2.1" }
 }
 //上传:cmd 到根目录 gradle uploadArchives成功后到 ../repo 找插件
 uploadArchives {
